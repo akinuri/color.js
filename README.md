@@ -15,3 +15,9 @@ var myColor = color("red");
 	}
 */
 ```
+
+## Methods
+
+| Method | Description | Usage | Output |
+| --- | --- | --- | --- |
+| hex() | returns color in hex format | color("red").hex() | "#ff0000" |
