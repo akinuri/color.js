@@ -23,3 +23,5 @@ var myColor = color("red");
 | hex() | Returns color in hex format. | `color("red").hex()` | `"#ff0000"` |
 | rgb() | Returns color in RGB format. | `color("red").rgb()` | `"rgb(255, 0, 0)"` |
 | rgba() | Returns color in RGBA format. If the color doesn't have <br>alpha value, it is set to 1. | `color("red").rgba()` | `"rgba(255, 0, 0, 1)"` |
+| hsl() | Returns color in HSL format. | `color("red").hsl()` | `"hsl(0, 100%, 50%)"` |
+| hsla() | Returns color in HSLA format. If the color doesn't have <br>alpha value, it is set to 1. | `color("red").hsla()` | `"hsla(0, 100%, 50%, 1)"` |
