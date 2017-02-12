@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Conversion Test - color.js</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="" />
+        <style>
+            body {
+                background: gainsboro;
+            }
+        </style>
+    <head>
+<body>
+
+
+<script src="color.js"></script>
+<script>
+    var colors = [
+        [144,167,85],
+        86,
+        "red",
+        "#ad9",
+        "#f9f8f7",
+        "rgb(123,61,45)",
+        "rgba(123,61,45,.5)",
+        "hsl(55,65%,51%)",
+        "hsla(55,65%,51%,1)",
+    ];
+    
+    var outputs = [];
+    colors.forEach(function (input) {
+        var c = color(input);
+        var input = c.input;
+        if (input instanceof Array) {
+            input = JSON.stringify(c.input);
+        }
+        outputs.push([input, c.hex(), c.rgb(), c.rgba(), c.hsl(), c.hsla()]);
+    });
+    
+    // multiple arguments
+    var vals = "(45, 76, 115)";
+    var c = color(45, 76, 115);
+    outputs.unshift([vals, c.hex(), c.rgb(), c.rgba(), c.hsl(), c.hsla()]);
+    
+    console.table(outputs);
+</script>
+
+
+</body>
+</html>

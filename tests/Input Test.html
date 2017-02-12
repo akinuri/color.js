@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Input Test - color.js</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="" />
+        <style>
+            body {
+                background: gainsboro;
+            }
+        </style>
+    <head>
+<body>
+
+
+<script src="color.js"></script>
+<script>
+    var cases = [
+        /* ========== valid colors ========== */
+        [144,167,85],
+        0,
+        51,
+        255,
+        "red",
+        "DodgerBlue",
+        "#FFF",
+        "#F0F0F0",
+        "rgb(255,128,128)",
+        "rgba(255,128,128,.5)",
+        "rgba(255,128,128,0.5)",
+        "rgba(255,128,128,1)",
+        "rgba( 255 , 128 , 128 , 1 )",
+        "hsl(50,70%,80%)",
+        "hsla(50,70%,80%,.5)",
+        "hsla(50,70%,80%,0.5)",
+        "hsla(50,70%,80%,1)",
+        "hsla( 50 , 70% , 80% , 1 )",
+        
+        /* ========== invalid colors ========== */
+        
+        "#XXX",
+        "#XYZ123",
+        "#ABCD",
+        "#ABCD1234",
+        
+        "rgb(255,128,-128)",
+        "rgb(255,128,328)",
+        "rgb(255,128,)",
+        "rgb(255,128)",
+        "rgb(255,128,128,1)",
+        "rgb(255,128,ab)",
+        
+        "rgba(255,128,128,2)",
+        "rgba(255,128,-128)",
+        "rgba(255,128,328)",
+        "rgba(255,128,)",
+        "rgba(255,128)",
+        "rgba(255,128,128,-1)",
+        "rgba(255,128,ab)",
+        
+        "hsl( 50 , 70$ , 80$ )",
+        "hsl(450,70%,80%)",
+        "hsl(50,70%,0)",
+        "hsl(50,70%,-10%)",
+        "hsl(50,70%,ab%)",
+        "hsl(50,70%,%)",
+        
+        "hsla(50,70%,80%)",
+        "hsla( 50 , 70$ , 80$ ,1)",
+        "hsla(450,70%,80%,1)",
+        "hsla(50,70%,0,1)",
+        "hsla(50,70%,-10%,.5)",
+        "hsla(50,70%,ab%,1)",
+        "hsla(50,70%,%,.1)",
+    ];
+    
+    var cs = [];
+    cases.forEach(function (item) {
+        var c = color(item);
+        var input = c.input;
+        if (input instanceof Array) {
+            input = JSON.stringify(c.input);
+        }
+        cs.push([input, c.type, JSON.stringify(c.values)]);
+    });
+    
+    // multiple arguments
+    var vals = "(45, 76, 115)";
+    var c = color(45, 76, 115);
+    cs.unshift([vals, c.type, JSON.stringify(c.values)]);
+    
+    console.table(cs);
+</script>
+
+
+</body>
+</html>

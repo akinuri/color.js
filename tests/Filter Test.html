@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Filter Test</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="" />
+        <style>
+            body {
+                background: gainsboro;
+            }
+        </style>
+    <head>
+<body>
+
+
+<script src="color.js"></script>
+<script>
+    var red = color("red")
+                          .hue(70)      // increase hue by 40
+                          .sat(-40)     // decrease saturation by 40
+                          .lum(-20)     // decrease luminosity by 20
+                          .alpha(-0.2); // decrease alpha by 0.2
+    
+    /* results in   "rgba(107, 122, 31, 0.8)"
+                    "hsla(70, 59%, 30%, 0.8)"   */
+</script>
+
+
+</body>
+</html>
