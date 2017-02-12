@@ -20,4 +20,4 @@ var myColor = color("red");
 
 | Method | Description | Usage | Output |
 | --- | --- | --- | --- |
-| hex() | returns color in hex format | color("red").hex() | "#ff0000" |
+| hex() | Returns color in hex format. | `color("red").hex()` | `"#ff0000"` |
