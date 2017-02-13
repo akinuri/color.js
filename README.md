@@ -37,7 +37,8 @@ var myColor = color("red");
 	</tr>
 	<tr>
 		<td><code>hue()</code></td>
-		<td>Shifts the hue by the given amount. Since hue is a part of HSL, now the color is converted to HSL.</td>
+		<td>Shifts the hue by the entered amount. <br> Since hue is a part of HSL, now the color is converted to HSL.</td>
+		<td><code>color("red").hue(70)</code></td>
 		<td><pre>{
 	input  : "hsl(70, 100%, 50%)
 	type   : "hsl"
