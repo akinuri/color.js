@@ -55,6 +55,16 @@ var myColor = color("red");
 	values : [248, 73, 58])"
 }</pre></td>
 	</tr>
+	<tr>
+		<td><code>lum()</code></td>
+		<td>Increases/decreases the luminosity by the entered amount. ... color is converted to HSL.</td>
+		<td><code>color("slateblue").lum(20)</code></td>
+		<td><pre>{
+	input  : "hsl(248, 53%, 88%)"
+	type   : "hsl"
+	values : [248, 53, 78])"
+}</pre></td>
+	</tr>
 </table>
 
 
