@@ -37,33 +37,18 @@ var myColor = color("red");
 	</tr>
 	<tr>
 		<td><code>hue()</code></td>
-		<td>Shifts the hue by the entered amount. Since hue is a part of HSL, now the color is converted to HSL.</td>
+		<td>Shifts the hue by the entered amount. <br> HSL methods, first, convert the color to HSL, then applies the change. If your color is in Hex or RGB format, you'll end up with HSL.</td>
 		<td><code>color("red").hue(70)</code></td>
-		<td><pre>{
-	input  : "hsl(70, 100%, 50%)"
-	type   : "hsl"
-	values : [70, 100, 50])"
-}</pre></td>
 	</tr>
 	<tr>
 		<td><code>sat()</code></td>
-		<td>Increases/decreases the saturation by the entered amount. ... color is converted to HSL.</td>
+		<td>Increases/decreases the saturation by the entered amount.</td>
 		<td><code>color("slateblue").sat(20)</code></td>
-		<td><pre>{
-	input  : "hsl(248, 73%, 58%)"
-	type   : "hsl"
-	values : [248, 73, 58])"
-}</pre></td>
 	</tr>
 	<tr>
 		<td><code>lum()</code></td>
-		<td>Increases/decreases the luminosity by the entered amount. ... color is converted to HSL.</td>
-		<td><code>color("slateblue").lum(20)</code></td>
-		<td><pre>{
-	input  : "hsl(248, 53%, 88%)"
-	type   : "hsl"
-	values : [248, 53, 78])"
-}</pre></td>
+		<td>Increases/decreases the luminosity by the entered amount.</td>
+		<td><code>color("slateblue").lum(-20)</code></td>
 	</tr>
 </table>
 
