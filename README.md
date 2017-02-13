@@ -28,16 +28,17 @@ var myColor = color("red");
 | `hsl()` | Returns color in HSL format. | `color("red").hsl()` | `"hsl(0, 100%, 50%)"` |
 | `hsla()` | Returns color in HSLA format. <br> If the color doesn't have alpha value, it is set to 1. | `color("red").hsla()` | `"hsla(0, 100%, 50%, 1)"` |
 
+Methods below, first, converts the color to HSL format, and then applies the change. If your color is in Hex or RGB format, you'll end up with HSL. Of course, you can convert again.
+
 <table>
 	<tr>
 		<th>Modification</th>
 		<th>Description</th>
 		<th>Usage</th>
-		<th>After Mod.</th>
 	</tr>
 	<tr>
 		<td><code>hue()</code></td>
-		<td>Shifts the hue by the entered amount. <br> HSL methods, first, convert the color to HSL, then applies the change. If your color is in Hex or RGB format, you'll end up with HSL.</td>
+		<td>Shifts the hue by the entered amount.</td>
 		<td><code>color("red").hue(70)</code></td>
 	</tr>
 	<tr>
