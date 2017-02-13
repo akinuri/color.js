@@ -28,7 +28,7 @@ var myColor = color("red");
 | `hsl()` | Returns color in HSL format. | `color("red").hsl()` | `"hsl(0, 100%, 50%)"` |
 | `hsla()` | Returns color in HSLA format. <br> If the color doesn't have alpha value, it is set to 1. | `color("red").hsla()` | `"hsla(0, 100%, 50%, 1)"` |
 
-Methods below, first, converts the color to HSL format, and then applies the change. If your color is in Hex or RGB format, you'll end up with HSL. Of course, you can convert again.
+Below three methods, first, converts the color to HSL format, and then applies the change. If your color is in Hex or RGB format, you'll end up with HSL format.
 
 <table>
 	<tr>
@@ -50,6 +50,11 @@ Methods below, first, converts the color to HSL format, and then applies the cha
 		<td><code>lum()</code></td>
 		<td>Increases/decreases the luminosity by the entered amount.</td>
 		<td><code>color("slateblue").lum(-20)</code></td>
+	</tr>
+	<tr>
+		<td><code>alpha()</code></td>
+		<td>Increases/decreases the alpha (opacity) by the entered amount.</td>
+		<td><code>color("slateblue").alpha(-0.25)</code></td>
 	</tr>
 </table>
 
