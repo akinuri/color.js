@@ -28,14 +28,16 @@ var myColor = color("red");
 | `hsl()` | Returns color in HSL format. | `color("red").hsl()` | `"hsl(0, 100%, 50%)"` |
 | `hsla()` | Returns color in HSLA format. <br> If the color doesn't have alpha value, it is set to 1. | `color("red").hsla()` | `"hsla(0, 100%, 50%, 1)"` |
 
-| Modification | Description | Usage | Output |
-| --- | --- | --- | --- |
-| `hue()` | Shifts the hue by the given amount. <br> Since hue is a part of HSL, <br> now the color is converted to HSL. | `color("red").hue(70)` | `{` <br> `  input  : "hsl(70, 100%, 50%)` <br> `  type   : "hsl"` <br> `  values : [70, 100, 50])"` <br> `}` |
-
 <table>
 	<tr>
+		<th>Modification</th>
+		<th>Description</th>
+		<th>Usage</th>
+		<th>Output</th>
+	</tr>
+	<tr>
 		<td><code>hue()</code></td>
-		<td>Shifts the hue by the given amount. <br> Since hue is a part of HSL, <br> now the color is converted to HSL.</td>
+		<td>Shifts the hue by the given amount. Since hue is a part of HSL, now the color is converted to HSL.</td>
 		<td><pre>{
 	input  : "hsl(70, 100%, 50%)
 	type   : "hsl"
