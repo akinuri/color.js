@@ -386,6 +386,12 @@
         this.values = c.values.slice();
     };
     
+    color.prototype.clone = function clone() {
+        var c = color();
+        c.copy(this);
+        return c;
+    };
+    
     color.prototype.parse = function () {
         this.input  = null;
         this.type   = null;
