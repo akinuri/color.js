@@ -28,8 +28,6 @@ var myColor = color("red");
 | `hsl()` | Returns color in HSL format. | `color("red").hsl()` | `"hsl(0, 100%, 50%)"` |
 | `hsla()` | Returns color in HSLA format. <br> If the color doesn't have alpha value, it is set to 1. | `color("red").hsla()` | `"hsla(0, 100%, 50%, 1)"` |
 
-Below three methods, first, converts the color to HSL format, and then applies the change. If your color is in Hex or RGB format, you'll end up with HSL format.
-
 <table>
 	<tr>
 		<th>Modification</th>
@@ -58,5 +56,6 @@ Below three methods, first, converts the color to HSL format, and then applies t
 	</tr>
 </table>
 
+First three methods, converts the color to HSL format, and then applies the change. If your color is in Hex or RGB format, you'll end up with HSL format.
 
 
