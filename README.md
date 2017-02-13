@@ -34,7 +34,17 @@ var myColor = color("red");
 
 <table>
 	<tr>
-		<td><pre>hue()<pre></td>
+		<td><code>hue()</code></td>
+		<td>Shifts the hue by the given amount. <br> Since hue is a part of HSL, <br> now the color is converted to HSL.</td>
+		<td><code>
+<pre>
+{
+	input  : "hsl(70, 100%, 50%)
+	type   : "hsl"
+	values : [70, 100, 50])"
+}
+</pre>
+		</code></td>
 	</tr>
 </table>
 
