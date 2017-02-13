@@ -32,3 +32,11 @@ var myColor = color("red");
 | --- | --- | --- | --- |
 | `hue()` | Shifts the hue by the given amount. <br> Since hue is a part of HSL, <br> now the color is converted to HSL. | `color("red").hue(70)` | `{` <br> `  input  : "hsl(70, 100%, 50%)` <br> `  type   : "hsl"` <br> `  values : [70, 100, 50])"` <br> `}` |
 
+<table>
+	<tr>
+		<td><pre>hue()<pre></td>
+	</tr>
+</table>
+
+
+
