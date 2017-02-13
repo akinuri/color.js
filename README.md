@@ -33,16 +33,26 @@ var myColor = color("red");
 		<th>Modification</th>
 		<th>Description</th>
 		<th>Usage</th>
-		<th>Output</th>
+		<th>After Mod.</th>
 	</tr>
 	<tr>
 		<td><code>hue()</code></td>
-		<td>Shifts the hue by the entered amount. <br> Since hue is a part of HSL, now the color is converted to HSL.</td>
+		<td>Shifts the hue by the entered amount. Since hue is a part of HSL, now the color is converted to HSL.</td>
 		<td><code>color("red").hue(70)</code></td>
 		<td><pre>{
-	input  : "hsl(70, 100%, 50%)
+	input  : "hsl(70, 100%, 50%)"
 	type   : "hsl"
 	values : [70, 100, 50])"
+}</pre></td>
+	</tr>
+	<tr>
+		<td><code>sat()</code></td>
+		<td>Increases/decreases the saturation by the entered amount. ... color is converted to HSL.</td>
+		<td><code>color("slateblue").sat(20)</code></td>
+		<td><pre>{
+	input  : "hsl(248, 73%, 58%)"
+	type   : "hsl"
+	values : [248, 73, 58])"
 }</pre></td>
 	</tr>
 </table>
