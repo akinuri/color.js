@@ -12,7 +12,7 @@ var paragraph = header.clone().lum(20);   // paragraph.rgb()  => "rgb(255, 102, 
 ## Properties
 
 | Property | Description |
-| --- | --- | --- | --- |
+| --- | --- |
 | `input` | The argument passed to the color function. It can be a color string or an RGB array. |
 | `type` | Type of the color, e.g., `"rgb"`, `"rgba"`, `"hsl"`, `"hsla"`. |
 | `values` | Color values for the given type of color, e.g., `[255, 0, 0]` for `"rgb"` of `"red"`. |
