@@ -41,6 +41,18 @@
         return num;
     };
     
+    Number.prototype.precision = function getSetPecision() {
+        if (arguments.length == 1 && Number.isInteger(arguments[0])) {
+            return parseFloat(this.toFixed(arguments[0]));
+        } else {
+            var value = parseFloat(this);
+            if (Number.isFloat(value)) {
+                return value.toString().split(".")[1].length;
+            }
+            return 0;
+        }
+    };
+    
     /* ==================== Parsing CSS Color Strings ==================== */
     
     function parseHEX(input) {
@@ -128,7 +140,9 @@
         ];
     }
     function hex2hsl(RH, GH, BH) {
-        return rgb2hsl.apply(null, hex2rgb(RH, GH, BH));
+        var rgb = hex2rgb(RH, GH, BH);
+        rgb.push(true);
+        return rgb2hsl.apply(null, rgb);
     }
     
     function rgb2hex(r, g, b) {
@@ -140,7 +154,7 @@
         b = b.length < 2 ? "0" + b : b;
         return [r, g, b];
     }
-    function rgb2hsl(r, g, b) {
+    function rgb2hsl(r, g, b, round) {
         r /= 255,
         g /= 255,
         b /= 255;
@@ -165,10 +179,17 @@
                     break;
             }
         }
-        hue = Math.round(hue * 60);
-        sat = Math.round(sat * 100);
-        lum = Math.round(lum * 100);
-        return [hue, sat, lum];
+        hue *= 60;
+        sat *= 100;
+        lum *= 100;
+        if (round) {
+            return [
+                Math.round(hue),
+                Math.round(sat),
+                Math.round(lum),
+            ];
+        }
+        return [hue.precision(1), sat.precision(1), lum.precision(1)];
     }
     
     function hsl2hex(h, s, l) {
@@ -196,10 +217,11 @@
             g = hue2rgb(p, q, h);
             b = hue2rgb(p, q, h - 1/3);
         }
-        r = Math.round(r * 255);
-        g = Math.round(g * 255);
-        b = Math.round(b * 255);
-        return [r, g, b];
+        return [
+            Math.round(r * 255),
+            Math.round(g * 255),
+            Math.round(b * 255),
+        ];
     }
     
     /* ==================== Named HTML Colors ==================== */
@@ -492,7 +514,7 @@
         }
     };
     
-    color.prototype.hex = function toHex(values) {
+    color.prototype.hex = function toHex(valuesOnly) {
         var hex;
         switch (this.type) {
             case "hex":
@@ -507,13 +529,13 @@
                 hex = hsl2hex.apply(null, this.values);
                 break;
         }
-        if (values) {
+        if (valuesOnly) {
             return hex;
         }
         return "#" + hex.join("");
     };
     
-    color.prototype.rgb = function toRGB(values) {
+    color.prototype.rgb = function toRGB(valuesOnly) {
         var rgb;
         switch (this.type) {
             case "hex":
@@ -532,13 +554,13 @@
                 var rgb = hsl2rgb.apply(null, this.values);
                 break;
         }
-        if (values) {
+        if (valuesOnly) {
             return rgb;
         }
         return "rgb(" + rgb.join(", ") + ")";
     };
     
-    color.prototype.rgba = function toRGBA(values) {
+    color.prototype.rgba = function toRGBA(valuesOnly) {
         var rgba;
         switch (this.type) {
             case "hex":
@@ -561,13 +583,13 @@
                 rgba.push(this.values[3]);
                 break;
         }
-        if (values) {
+        if (valuesOnly) {
             return rgba;
         }
         return "rgba(" + rgba.join(", ") + ")";
     };
     
-    color.prototype.hsl = function toHSL(values) {
+    color.prototype.hsl = function toHSL(valuesOnly) {
         var hsl;
         switch (this.type) {
             case "hex":
@@ -575,7 +597,12 @@
                 break;
             case "rgb":
             case "rgba":
-                hsl = rgb2hsl.apply(null, this.values);
+                var rgb = this.values.slice();
+                if (this.type == "rgba") {
+                   rgb.pop();
+                }
+                rgb.push(true);
+                hsl = rgb2hsl.apply(null, rgb);
                 break;
             case "hsl":
                 hsl = this.values.slice();
@@ -584,13 +611,13 @@
                 hsl = this.values.slice().splice(0,3);
                 break;
         }
-        if (values) {
+        if (valuesOnly) {
             return hsl;
         }
         return "hsl(" + hsl[0] + ", " + hsl[1] + "%, " + hsl[2] + "%)";
     };
     
-    color.prototype.hsla = function toHSLA(values) {
+    color.prototype.hsla = function toHSLA(valuesOnly) {
         var hsla;
         switch (this.type) {
             case "hex":
@@ -598,12 +625,17 @@
                 hsla.push(1);
                 break;
             case "rgb":
-                hsla = rgb2hsl.apply(null, this.values);
+                var rgb = this.values.slice();
+                rgb.push(true);
+                hsla = rgb2hsl.apply(null, rgb);
                 hsla.push(1);
                 break;
             case "rgba":
-                hsla = rgb2hsl.apply(null, this.values);
-                hsla.push(this.values[3]);
+                var rgb = this.values.slice();
+                var alpha = rgb.pop();
+                rgb.push(true);
+                hsla = rgb2hsl.apply(null, rgb);
+                hsla.push(alpha);
                 break;
             case "hsl":
                 hsla = this.values.slice();
@@ -613,7 +645,7 @@
                 hsla = this.values.slice();
                 break;
         }
-        if (values) {
+        if (valuesOnly) {
             return hsla;
         }
         return "hsla(" + hsla[0] + ", " + hsla[1] + "%, " + hsla[2] + "%, " + hsla[3] + ")";
